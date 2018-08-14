@@ -32,10 +32,13 @@ def convert_annotation(seq):
 
             
 wd = os.getcwd()
-if not os.path.exists('JPEGImages'):
-    os.makedirs('JPEGImages')
+if not os.path.exists('images'):
+    os.makedirs('images')
 if not os.path.exists('labels'):
     os.makedirs('labels')
+
+train_file = wd + '/images.txt'
+train_file_txt = ''
     
 seqs_size = dict()
 
@@ -49,9 +52,14 @@ for seq in seqs:
     for img in imgs:
         if img[-3:] != 'jpg':
             continue
-        os.rename(img, wd + '/JPEGImages/{}_{:0>7}.jpg'.format(seq, int(img[:-4])))
+        dst = wd + '/images/{}_{:0>7}.jpg'.format(seq, int(img[:-4]))
+        os.rename(img, dst)
+        train_file_txt = train_file_txt + dst + '\n'
     os.chdir('..')
     os.rmdir(seq)
-    with Image.open(wd + '/JPEGImages/{}_0000001.jpg'.format(seq)) as Img:
+    with Image.open(wd + '/images/{}_0000001.jpg'.format(seq)) as Img:
         seqs_size[seq] = Img.size
     convert_annotation(seq)
+
+with open(train_file, 'w') as outfile:
+    outfile.write(train_file_txt)

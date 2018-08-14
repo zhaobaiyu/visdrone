@@ -18,6 +18,9 @@ wd = os.getcwd()
 if not os.path.exists('labels'):
     os.makedirs('labels')
 
+train_file = 'images.txt'
+train_file_txt = ''
+    
 anns = os.listdir('annotations')
 for ann in anns:
     ans = ''
@@ -35,4 +38,7 @@ for ann in anns:
             ans = ans + row[5] + ' ' + ' '.join(str(a) for a in bb) + '\n'
             with open(outpath, 'w') as outfile:
                 outfile.write(ans)
-        
+    train_file_txt = train_file_txt + wd + '/images/' + ann[:-3] + 'jpg\n'
+
+with open(train_file, 'w') as outfile:
+    outfile.write(train_file_txt)

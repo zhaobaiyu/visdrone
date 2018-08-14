@@ -1,0 +1,5 @@
+classes= 10
+train  = /home/baiyu/Data/VisDrone/VisDrone2018-DET-train/images.txt
+valid  = /home/baiyu/Data/VisDrone/VisDrone2018-DET-val/images.txt
+names = data/visdrone.names
+backup = backup

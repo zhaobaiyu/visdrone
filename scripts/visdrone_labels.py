@@ -21,6 +21,9 @@ if not os.path.exists('labels'):
 
 anns = os.listdir('annotations')
 
+train_file = 'images.txt'
+train_file_txt = ''
+
 for ann in anns:
     if ann[:3] != 'uav':
         continue
@@ -38,4 +41,7 @@ for ann in anns:
     for img, value in tmp.items():
         with open(wd + '/labels/' + ann[:-4] + '/{:0>7}.txt'.format(int(img)), 'w') as outfile:
             outfile.write(value)
-
+        train_file_txt = train_file_txt + wd + '/sequences/' + ann[:-4] + '/{:0>7}.jpg'.format(int(img)) + '\n'
+            
+with open(train_file, 'w') as outfile:
+    outfile.write(train_file_txt)
