@@ -26,7 +26,7 @@ def convert_annotation(seq):
             bb = convert(seqs_size[seq], tuple(map(int, row[2:6])))
             tmp[row[0]] = tmp[row[0]] + row[7] + ' ' + ' '.join(str(a) for a in bb) + '\n'
     for img, value in tmp.items():
-        with open(wd + '/labels/{:0>3}_{:0>4}.txt'.format(seqs_dict[seq], int(img)), 'w') as outfile:
+        with open(wd + '/labels/{}_{:0>7}.txt'.format(seq, int(img)), 'w') as outfile:
             outfile.write(value)
     return
 
@@ -38,13 +38,10 @@ if not os.path.exists('labels'):
     os.makedirs('labels')
     
 seqs_size = dict()
-seqs_dict = dict()
 
 os.chdir('sequences')
 seqs = os.listdir()
-seq_num = 1
 for seq in seqs:
-    seqs_dict[seq] = seq_num
     if seq[:3] != 'uav':
         continue
     os.chdir(seq)
@@ -52,10 +49,9 @@ for seq in seqs:
     for img in imgs:
         if img[-3:] != 'jpg':
             continue
-        os.rename(img, wd + '/JPEGImages/{:0>3}_{:0>4}.jpg'.format(seq_num, int(img[:-4])))
+        os.rename(img, wd + '/JPEGImages/{}_{:0>7}.jpg'.format(seq, int(img[:-4])))
     os.chdir('..')
     os.rmdir(seq)
-    with Image.open(wd + '/JPEGImages/{:0>3}_0001.jpg'.format(seq_num)) as Img:
+    with Image.open(wd + '/JPEGImages/{}_0000001.jpg'.format(seq)) as Img:
         seqs_size[seq] = Img.size
     convert_annotation(seq)
-    seq_num += 1
