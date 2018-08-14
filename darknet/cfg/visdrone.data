@@ -1,0 +1,5 @@
+classes= 10
+train  = <path-to-coco>/trainvalno5k.txt
+valid  = <path-to-coco>/5k.txt
+names = data/visdrone.names
+backup = backup
