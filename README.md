@@ -105,7 +105,7 @@ GPU: Tesla V100
 
 max_batches: 50200 (stop at )
 
-![training815_1344](https://github.com/zhaobaiyu/visdrone/blob/master/doc/training815_1344.jpg)
+![training815_1344](https://github.com/zhaobaiyu/visdrone/raw/master/doc/training815_1344.png)
 
 ```
 Loaded: 0.000053 seconds
