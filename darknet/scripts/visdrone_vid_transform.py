@@ -40,15 +40,15 @@ if not os.path.exists('labels'):
 
 # below images not have labels in training set
 os.chdir(wd + '/sequences/')
-if not os.path.exists('uav0000281_00460_v/0000023.jpg'):
-    os.remove(wd + '/images/uav0000281_00460_v/0000023.jpg')
+if os.path.exists('uav0000281_00460_v/0000023.jpg'):
+    os.remove('uav0000281_00460_v/0000023.jpg')
 
-if not os.path.exists('uav0000281_00460_v/0000024.jpg'):
-    os.remove(wd + '/images/uav0000281_00460_v/0000024.jpg')
+if os.path.exists('uav0000281_00460_v/0000024.jpg'):
+    os.remove('uav0000281_00460_v/0000024.jpg')
 
-if not os.path.exists('uav0000281_00460_v/0000025.jpg'):
-    os.remove(wd + '/images/uav0000281_00460_v/0000025.jpg')
-
+if os.path.exists('uav0000281_00460_v/0000025.jpg'):
+    os.remove('uav0000281_00460_v/0000025.jpg')
+os.chdir('..')
 
     
 train_file = wd + '/images.txt'

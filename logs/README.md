@@ -102,7 +102,7 @@ Region 94 Avg IOU: 0.775313, Class: 0.775805, Obj: 0.726921, No Obj: 0.002233, .
 - No Obj: 期望该值越来越小，但不为零。 
 - count: 所有的当前subdivision图片（本例中一共8张）中包含正样本的数量。
 
-### 2. 15th August 16:00 ~ 
+### 2. 15th August 16:45 ~ 
 
 dataset: VID
 
