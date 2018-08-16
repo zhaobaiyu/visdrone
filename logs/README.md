@@ -102,19 +102,35 @@ Region 94 Avg IOU: 0.775313, Class: 0.775805, Obj: 0.726921, No Obj: 0.002233, .
 - No Obj: 期望该值越来越小，但不为零。 
 - count: 所有的当前subdivision图片（本例中一共8张）中包含正样本的数量。
 
-### 2. 15th August 16:45 ~ 
+### 2. 16th August 09:49
+
+Start time: 15th August 16:45
+
+Training time: 17 hours
 
 dataset: VID
 
-hyperparameter: `batch: 64, subdivisions=8, max_batches: 50200 (stop at )`
+hyperparameter: `batch: 64, subdivisions=8, max_batches: 50200 (stop at 13689)`
 
 Platform: Google Cloud 8 cores, 18G RAM
 
 GPU: [Tesla V100](https://www.nvidia.com/content/PDF/Volta-Datasheet.pdf)
 
-![](https://)
+![training816_0949](https://github.com/zhaobaiyu/visdrone/raw/master/doc/training816_0949.png)
 
-```
-1631: 27.562284, 28.765835 avg, 0.001000 rate, 11.283772 seconds, 208768 images
-```
+训练17个小时，用val中数据测试，效果还是很差的，而且`car`都被错分为`van`
+
+![](https://baiyu-public.oss-cn-beijing.aliyuncs.com/visdrone/01.png)
+
+![](https://baiyu-public.oss-cn-beijing.aliyuncs.com/visdrone/02.png)
+
+![](https://baiyu-public.oss-cn-beijing.aliyuncs.com/visdrone/05.png)
+
+![](https://baiyu-public.oss-cn-beijing.aliyuncs.com/visdrone/06.png)
+
+![](https://baiyu-public.oss-cn-beijing.aliyuncs.com/visdrone/07.png)
+
+![](https://baiyu-public.oss-cn-beijing.aliyuncs.com/visdrone/09.png)
+
+![](https://baiyu-public.oss-cn-beijing.aliyuncs.com/visdrone/10.png)
 
