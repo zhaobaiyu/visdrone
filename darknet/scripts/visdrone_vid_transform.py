@@ -25,7 +25,7 @@ def convert_annotation(seq):
             if row[6] == '0':
                 continue
             bb = convert(seqs_size[seq], tuple(map(int, row[2:6])))
-            tmp[row[0]] = tmp[row[0]] + row[7] + ' ' + ' '.join(str(a) for a in bb) + '\n'
+            tmp[row[0]] = tmp[row[0]] + str(int(row[7])-1) + ' ' + ' '.join(str(a) for a in bb) + '\n'
     for img, value in tmp.items():
         with open(wd + '/labels/{}_{:0>7}.txt'.format(seq, int(img)), 'w') as outfile:
             outfile.write(value)
