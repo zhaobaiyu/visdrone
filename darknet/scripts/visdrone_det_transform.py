@@ -35,7 +35,7 @@ for ann in anns:
             if row[4] == '0':
                 continue
             bb = convert(img_size, tuple(map(int, row[:4])))
-            ans = ans + row[5] + ' ' + ' '.join(str(a) for a in bb) + '\n'
+            ans = ans + str(int(row[5])-1) + ' ' + ' '.join(str(a) for a in bb) + '\n'
             with open(outpath, 'w') as outfile:
                 outfile.write(ans)
     train_file_txt = train_file_txt + wd + '/images/' + ann[:-3] + 'jpg\n'
