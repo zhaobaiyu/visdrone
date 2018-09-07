@@ -20,11 +20,11 @@ os.makedirs(new_labels_dir)
 
 images_txt = ''
 for path in selected_image_paths:
-    os.rename(path, new_images_dir)
+    os.rename(path, os.path.join(new_images_dir, os.path.split(path)[1]))
     images_txt += path + '\n'
 
 for path in selected_label_paths:
-    os.rename(path, new_labels_dir)
+    os.rename(path, os.path.join(new_labels_dir, os.path.split(path)[1]))
 
 with open(os.path.join(new_selected_dir, 'images.txt'), 'w') as outfile:
     outfile.write(images_txt)
