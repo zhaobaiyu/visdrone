@@ -14,9 +14,11 @@ colors = [(25,202,173),
            (236,173,158),
            (244,96,108)]
 
-def draw_box(img_path, label_path):
+
+def draw_box(img_path, label_path, output_dir=None):
     img_dir, img_name = os.path.split(img_path)
-    label_dir, label_name = os.path.split(label_path)
+    if output_dir is None:
+        output_dir = img_dir
     
     with Image.open(img_path) as im:
         im_size = im.size
@@ -28,8 +30,9 @@ def draw_box(img_path, label_path):
                 int_row = [int(a) for a in [row[1]*im_size[0], row[2]*im_size[1], row[3]*im_size[0], row[4]*im_size[1]]]
                 box = [int_row[0]-int_row[2]//2, int_row[1]-int_row[3]//2, int_row[0]+int_row[2]//2, int_row[1]+int_row[3]//2]
                 draw.rectangle(box, outline=colors[int(row[0])-1])
-        im.save(os.path.join(img_dir, 'box_'+img_name), 'PNG')
+        im.save(os.path.join(output_dir, 'box_'+img_name), 'PNG')
     return
+
 
 if __name__ == '__main__':
     draw_box(sys.argv[1], sys.argv[2])
