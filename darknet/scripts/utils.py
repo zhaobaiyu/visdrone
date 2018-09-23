@@ -88,13 +88,14 @@ def gen_images_txt(dst_dir):
     images_txt_path = os.path.join(dst_dir, 'images.txt')
     images_dir = os.path.join(dst_dir, 'images')
     labels_dir = os.path.join(dst_dir, 'labels')
-    images_id = sorted(list(map(lambda x: x[-4], os.listdir(images_dir))))
-    labels_id = sorted(list(map(lambda x: x[-4], os.listdir(labels_dir))))
+    images_id = sorted(list(map(lambda x: x[:-4], os.listdir(images_dir))))
+    labels_id = sorted(list(map(lambda x: x[:-4], os.listdir(labels_dir))))
     assert images_id == labels_id
     image_paths = [os.path.join(images_dir, image_id+'.jpg') for image_id in images_id]
     for _ in range(5):
         random.shuffle(image_paths)
     txt_str = '\n'.join(image_paths)
+    txt_str += '\n'
     with open(images_txt_path, 'w') as outfile:
         outfile.write(txt_str)
 
