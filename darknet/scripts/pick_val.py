@@ -30,3 +30,4 @@ if __name__ == "__main__":
     output_dir = sys.argv[2]
     if not os.path.exists(output_dir):
         os.mkdir(output_dir)
+    pick_val(valdata_dir, output_dir)
