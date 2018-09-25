@@ -11,7 +11,7 @@ def pick_val(valdata_dir, output_dir):
     imgs = os.listdir(img_dir)
     imgs_in_uavs = defaultdict(list)
     for img in imgs:
-        imgs_in_uavs[imgs[:18]].append(img[18:])
+        imgs_in_uavs[img[:18]].append(img[18:])
     for i, uav in enumerate(sorted(imgs_in_uavs), 1):
         imgs_in_uavs[uav].sort()
         len_uav = len(imgs_in_uavs[uav])
