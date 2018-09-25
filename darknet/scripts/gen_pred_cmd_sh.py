@@ -1,3 +1,6 @@
+import os
+import sys
+
 cmd = './darknet detector test cfg/visdrone.data cfg/yolov3-visdrone.cfg backup/{}.weights val_samples/uav_{:0>2}{:0>2}.jpg\n'
 mv_cmd = 'mv predictions.png val_samples/uav_{:0>2}{:0>2}_{}.png\n'
 
@@ -12,5 +15,11 @@ for weight in weights:
         for j in img_n:
             ans_str += cmd.format(weight, i, j) + mv_cmd.format(i, j, weight)
 
-with open('val_pred.sh', 'w') as outfile:
-    outfile.write(ans_str)
+
+def gen_sh(dst_dir):
+    with open(os.path.join(dst_dir, 'val_pred.sh'), 'w') as outfile:
+        outfile.write(ans_str)
+
+
+if __name__ == '__main__':
+    gen_sh(sys.argv[1])
